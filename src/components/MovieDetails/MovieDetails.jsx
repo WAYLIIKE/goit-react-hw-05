@@ -1,14 +1,21 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import css from './MovieDetails.module.css';
+import { MovieLinks } from '../MovieLinks/MovieLinks';
+import { MovieInfoBox } from '../MovieInfoBox/MovieInfoBox';
+import { FaArrowLeftLong } from 'react-icons/fa6';
+import { Suspense, useRef } from 'react';
 
 export const MovieDetails = ({
-  data: { title, backdrop_path, overview, vote_average },
+  data: { title, backdrop_path, overview, vote_average, release_date, genres },
 }) => {
-  const buildLinkClass = ({ isActive }) => {
-    return isActive ? css.isActive : css.link;
-  };
+  const location = useLocation();
+  const backLinkRef = useRef(location.state);
   return (
     <div className={css.container}>
+      <NavLink to={backLinkRef.current ?? '/movies'} className={css.backLink}>
+        <FaArrowLeftLong />
+        <p>Back to all movies</p>
+      </NavLink>
       <h1 className={css.title}>{title}</h1>
       <div className={css.mainbox}>
         <div>
@@ -19,27 +26,18 @@ export const MovieDetails = ({
             width={550}
           />
         </div>
-        <div>
-          <p className={css.info}>
-            Ranking:{' '}
-            <span className={css.infoValue}>
-              {(Math.round(vote_average * 100) / 100).toString()}
-            </span>
-          </p>
-          <p className={css.info}>Date: </p>
-        </div>
+        <MovieInfoBox
+          data={release_date}
+          ranking={vote_average}
+          genres={genres}
+        />
       </div>
       <p className={css.overviewTitle}>{`Overview of "${title}":`}</p>
       <p className={css.overview}>{overview}</p>
-      <div className={css.links}>
-        <NavLink to={`cast`} className={buildLinkClass}>
-          Cast
-        </NavLink>
-        <NavLink to={`reviews`} className={buildLinkClass}>
-          Reviews
-        </NavLink>
-      </div>
-      <Outlet />
+      <MovieLinks />
+      <Suspense fallback={<p>Loading...</p>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

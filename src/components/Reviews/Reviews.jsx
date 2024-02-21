@@ -28,5 +28,10 @@ export const Reviews = () => {
     };
   }, [id]);
 
-  return <div>{reviews.length > 0 && <ReviewList data={reviews} />}</div>;
+  return (
+    <div>
+      {reviews.length > 0 && <ReviewList data={reviews} />}
+      {reviews.length === 0 && <p>There are no reviews yet.</p>}
+    </div>
+  );
 };

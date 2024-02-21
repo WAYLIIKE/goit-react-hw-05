@@ -1,12 +1,13 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import css from './TrendingsListItem.module.css';
 
 export const TrendingsListItem = ({
   data: { title, id, backdrop_path, release_date },
 }) => {
+  const location = useLocation();
   return (
     <li className={css.container}>
-      <NavLink to={`/movies/${id}`}>
+      <NavLink to={`/movies/${id}`} state={location}>
         <div>
           <img
             src={`https://image.tmdb.org/t/p/w500/${backdrop_path}`}

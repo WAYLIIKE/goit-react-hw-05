@@ -1,5 +1,4 @@
 .container {
-  margin: 0 250px;
   display: flex;
   gap: 60px;
   flex-wrap: wrap;
