@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import css from './HomePage.module.css';
 import { getTrendingMovies } from '../../fetchAPI';
-import { TrendingsList } from '../../components/TrendingsList/TrendingsList';
+import { MovieList } from '../../components/MovieList/MovieList';
 
 export default function HomePage() {
   const [trendings, setTrendings] = useState([]);
@@ -32,7 +32,7 @@ export default function HomePage() {
     <div className={css.container}>
       <h1 className={css.title}>Trending movies today</h1>
       {error && <p>OPPPPPSSSSSSSSSSSS... UNKNOWN ERROR!</p>}
-      {!error && <TrendingsList data={trendings} />}
+      {!error && <MovieList data={trendings} />}
     </div>
   );
 }

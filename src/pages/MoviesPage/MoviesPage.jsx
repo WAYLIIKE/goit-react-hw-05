@@ -3,7 +3,7 @@ import { SearchBox } from '../../components/SearchBox/SearchBox';
 import css from './MoviesPage.module.css';
 import { Toaster, toast } from 'react-hot-toast';
 import { getMovieByQuery } from '../../fetchAPI';
-import { TrendingsList } from '../../components/TrendingsList/TrendingsList';
+import { MovieList } from '../../components/MovieList/MovieList';
 import { useSearchParams } from 'react-router-dom';
 
 export default function MoviesPage() {
@@ -53,7 +53,7 @@ export default function MoviesPage() {
       {movies.length === 0 && (
         <p className={css.empty}>Let`s find some movies...</p>
       )}
-      {movies.length > 0 && <TrendingsList data={movies} />}
+      {movies.length > 0 && <MovieList data={movies} />}
       <Toaster position="top-right" />
     </div>
   );

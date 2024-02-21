@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
-import css from './Reviews.module.css';
+import css from './MovieReviews.module.css';
 import { useEffect, useState } from 'react';
 import { getMovieReview } from '../../fetchAPI';
 import { ReviewList } from '../ReviewList/ReviewList';
 
-export default function Reviews() {
+export default function MovieReviews() {
   const [reviews, setReviews] = useState([]);
   const params = useParams();
   const id = params.movieId;

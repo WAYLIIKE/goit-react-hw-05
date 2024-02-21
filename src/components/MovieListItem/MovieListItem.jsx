@@ -1,7 +1,7 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import css from './TrendingsListItem.module.css';
+import css from './MovieListItem.module.css';
 
-export const TrendingsListItem = ({
+export const MovieListItem = ({
   data: { title, id, backdrop_path, release_date },
 }) => {
   const location = useLocation();

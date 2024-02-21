@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
-import css from './Cast.module.css';
+import css from './MovieCast.module.css';
 import { useEffect, useState } from 'react';
 import { getMovieCast } from '../../fetchAPI';
 import { CastList } from '../CastList/CastList';
 
-export default function Cast() {
+export default function MovieCast() {
   const [casts, setCasts] = useState([]);
   const params = useParams();
   const id = params.movieId;

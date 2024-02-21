@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
-import css from './Navbar.module.css';
+import css from './Navigation.module.css';
 
-export const Navbar = () => {
+export const Navigation = () => {
   const buildLinkClass = ({ isActive }) => {
     return isActive ? css.isActive : css.link;
   };
