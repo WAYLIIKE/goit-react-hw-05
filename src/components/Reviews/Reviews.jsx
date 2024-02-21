@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { getMovieReview } from '../../fetchAPI';
 import { ReviewList } from '../ReviewList/ReviewList';
 
-export const Reviews = () => {
+export default function Reviews() {
   const [reviews, setReviews] = useState([]);
   const params = useParams();
   const id = params.movieId;
@@ -34,4 +34,4 @@ export const Reviews = () => {
       {reviews.length === 0 && <p>There are no reviews yet.</p>}
     </div>
   );
-};
+}

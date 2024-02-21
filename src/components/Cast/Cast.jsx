@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { getMovieCast } from '../../fetchAPI';
 import { CastList } from '../CastList/CastList';
 
-export const Cast = () => {
+export default function Cast() {
   const [casts, setCasts] = useState([]);
   const params = useParams();
   const id = params.movieId;
@@ -33,4 +33,4 @@ export const Cast = () => {
       <CastList data={casts} />
     </div>
   );
-};
+}
